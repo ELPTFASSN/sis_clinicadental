@@ -103,7 +103,7 @@ class odontograma2 extends CI_Controller {
         $this->fpdf->AddPage();
         $this->fpdf->SetLeftMargin(35);
 
-        $this->fpdf->Image('http://sisodontologia.hol.es/resources/images/clinica/logo.png', 35, 10, 0, 40);
+        $this->fpdf->Image(base_url() . 'resources/images/clinica/logo.png', 35, 10, 0, 40);
         $this->fpdf->SetFont('Times', 'B', 24);
         $this->fpdf->Cell(160, 25, utf8_decode($clinica['nomb_clin']), 0, 0, 'C');
         $this->fpdf->SetFont('Times', "", 10);
