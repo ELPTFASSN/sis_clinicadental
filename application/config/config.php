@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 //$config['base_url'] = 'http://sisodontologia.hol.es/';
-$config['base_url'] = 'http://localhost/SisClinicaDental/';
+$config['base_url'] = 'http://localhost/sis_clinicadental/';
 $config['index_page'] = 'login';
 $config['uri_protocol'] = 'AUTO';
 $config['url_suffix'] = '';
