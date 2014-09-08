@@ -7,7 +7,7 @@ class home extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model(array('mod_usuario', 'mod_clinica'));
+        $this->load->model(array('mod_usuario', 'mod_clinica', 'mod_licence'));
         $this->load->library('session');
     }
 
@@ -17,7 +17,7 @@ class home extends CI_Controller {
         } else {
             //$data['carousel'] = $this->load->view('home/carousel', null, true);
             $data['clinica'] = $this->mod_clinica->get_clinica();
-            $data['container'] = $this->load->view('home/index', $data, true);            
+            $data['container'] = $this->load->view('home/index', $data, true);
             $this->load->view('home/body', $data);
         }
     }
@@ -77,7 +77,9 @@ class home extends CI_Controller {
     }
 
     public function logged() {
-        return $this->session->userdata('logged');
+        if ($this->mod_licence->validation()) {
+            return $this->session->userdata('logged');
+        }
     }
 
     public function admin() {

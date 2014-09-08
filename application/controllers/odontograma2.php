@@ -4,7 +4,7 @@ class odontograma2 extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model(array('mod_odontograma', 'mod_paciente', 'mod_cita', 'mod_procedimiento', 'mod_clinica'));
+        $this->load->model(array('mod_odontograma', 'mod_paciente', 'mod_cita', 'mod_procedimiento', 'mod_clinica', 'mod_licence'));
         $this->load->library('session');
     }
 
@@ -344,7 +344,9 @@ class odontograma2 extends CI_Controller {
     }
 
     public function logged() {
-        return $this->session->userdata('logged');
+        if ($this->mod_licence->validation()) {
+            return $this->session->userdata('logged');
+        }
     }
 
 }

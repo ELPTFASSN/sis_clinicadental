@@ -7,7 +7,7 @@ class factura extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model(array('mod_factura', 'mod_odontograma', 'mod_paciente', 'mod_cita','mod_clinica'));
+        $this->load->model(array('mod_factura', 'mod_odontograma', 'mod_paciente', 'mod_cita', 'mod_clinica', 'mod_licence'));
         $this->load->library('session');
     }
 
@@ -31,13 +31,13 @@ class factura extends CI_Controller {
         $this->fpdf->Cell(160, 25, utf8_decode($clinica['nomb_clin']), 0, 0, 'C');
         $this->fpdf->SetFont('Times', "", 10);
         $this->fpdf->Ln(8);
-        $this->fpdf->Cell(160, 25, utf8_decode('Dirección: '.$clinica['direc_clin']), 0, 0, 'C');
+        $this->fpdf->Cell(160, 25, utf8_decode('Dirección: ' . $clinica['direc_clin']), 0, 0, 'C');
         $this->fpdf->Ln(5);
-        $this->fpdf->Cell(160, 25, utf8_decode('Teléfono: '.$clinica['telf_clin']), 0, 0, 'C');
+        $this->fpdf->Cell(160, 25, utf8_decode('Teléfono: ' . $clinica['telf_clin']), 0, 0, 'C');
         $this->fpdf->Ln(5);
-        $this->fpdf->Cell(160, 25, utf8_decode('R.U.C.: '.$clinica['ruc_clin']), 0, 0, 'C');
+        $this->fpdf->Cell(160, 25, utf8_decode('R.U.C.: ' . $clinica['ruc_clin']), 0, 0, 'C');
         $this->fpdf->Ln(5);
-        $this->fpdf->Cell(160, 25, utf8_decode('E-mail: '.$clinica['email_clin']), 0, 0, 'C');
+        $this->fpdf->Cell(160, 25, utf8_decode('E-mail: ' . $clinica['email_clin']), 0, 0, 'C');
         $this->fpdf->SetLeftMargin(10);
         $this->fpdf->Ln(35);
         $this->fpdf->SetFont('Times', "", 12);
@@ -141,13 +141,13 @@ class factura extends CI_Controller {
         $this->fpdf->Cell(160, 25, utf8_decode($clinica['nomb_clin']), 0, 0, 'C');
         $this->fpdf->SetFont('Times', "", 10);
         $this->fpdf->Ln(8);
-        $this->fpdf->Cell(160, 25, utf8_decode('Dirección: '.$clinica['direc_clin']), 0, 0, 'C');
+        $this->fpdf->Cell(160, 25, utf8_decode('Dirección: ' . $clinica['direc_clin']), 0, 0, 'C');
         $this->fpdf->Ln(5);
-        $this->fpdf->Cell(160, 25, utf8_decode('Teléfono: '.$clinica['telf_clin']), 0, 0, 'C');
+        $this->fpdf->Cell(160, 25, utf8_decode('Teléfono: ' . $clinica['telf_clin']), 0, 0, 'C');
         $this->fpdf->Ln(5);
-        $this->fpdf->Cell(160, 25, utf8_decode('R.U.C.: '.$clinica['ruc_clin']), 0, 0, 'C');
+        $this->fpdf->Cell(160, 25, utf8_decode('R.U.C.: ' . $clinica['ruc_clin']), 0, 0, 'C');
         $this->fpdf->Ln(5);
-        $this->fpdf->Cell(160, 25, utf8_decode('E-mail: '.$clinica['email_clin']), 0, 0, 'C');
+        $this->fpdf->Cell(160, 25, utf8_decode('E-mail: ' . $clinica['email_clin']), 0, 0, 'C');
         $this->fpdf->SetLeftMargin(10);
         $this->fpdf->Ln(35);
         $this->fpdf->SetFont('Times', "", 12);
@@ -258,7 +258,7 @@ class factura extends CI_Controller {
             }
             $y2 += 10;
         }
-        
+
         // BORDES
         $this->fpdf->SetDrawColor(190);
         $this->fpdf->Rect(23, 104, 10, 28);
@@ -512,38 +512,6 @@ class factura extends CI_Controller {
         $this->fpdf->Ln(10);
 
         $this->fpdf->SetFont('Times', '', 11);
-
-//        foreach ($odontograma as $row) {
-//            
-//            $this->fpdf->Cell(20, 10, utf8_decode($row->num_die), 1, 0, 'C');
-//            $this->fpdf->Cell(40, 10, utf8_decode($row->nomb_edi), 1, 0, 'C');
-//            
-//            $partes_descripcion = "";
-//            
-//            $partes = $row->part_die;
-//            if ($partes[0] == "1") {
-//                $partes_descripcion .= '[M]';
-//            }
-//            if ($partes[1] == "1") {
-//                $partes_descripcion .= '[D]';
-//            }
-//            if ($partes[2] == "1") {
-//                $partes_descripcion .= '[O]';
-//            }
-//            if ($partes[3] == "1") {
-//                $partes_descripcion .= '[P]';
-//            }
-//            if ($partes[4] == "1") {
-//                $partes_descripcion .= '[L]';
-//            }
-//            if ($partes[5] == "1") {
-//                $partes_descripcion .= '[V]';
-//            }
-//            $this->fpdf->Cell(65, 10, utf8_decode($partes_descripcion), 1, 0, 'C');
-//            $this->fpdf->Cell(70, 10, utf8_decode($row->desc_enf), 1, 0, 'C');
-//            $this->fpdf->Ln(10);
-//        }
-
 
         $this->fpdf->Output();
     }
